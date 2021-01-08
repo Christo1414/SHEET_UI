@@ -78,42 +78,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <RelativeLayout
-                android:id="@+id/Map_Layout"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:background="#80A7FF93"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <View
-                    android:id="@+id/Map_Cursor_View"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="#00AA00" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/ZoomBarLayout"
-                android:layout_width="20dp"
-                android:layout_height="500dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:background="#80A7FF93"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-
-                app:layout_constraintTop_toTopOf="parent">
-
-                <View
-                    android:id="@+id/ZoomBarView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#00AA00" />
-            </RelativeLayout>
-
             <Button
                 android:id="@+id/button5"
                 android:layout_width="wrap_content"
@@ -123,6 +87,22 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.example.a3dsheet.MapView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/TranslationView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.example.a3dsheet.ZoomView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
