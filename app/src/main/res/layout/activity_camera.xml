@@ -20,15 +20,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <WebView
-            android:id="@+id/Camera_WebView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/Camera_UI"
             android:layout_width="0dp"
