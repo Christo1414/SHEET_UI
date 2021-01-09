@@ -13,14 +13,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 
 public class MapView extends ConstraintLayout{
-     static RelativeLayout map_layout;
-     static View map_cursor;
-     static TextView warning_text;
+     static private RelativeLayout map_layout;
+     static private View map_cursor;
+     static private TextView warning_text;
 
-     static float cursor_x_range;
-     static float cursor_y_range;
-     static float map_x_percentage = (float) 0.5;
-     static float map_y_percentage = (float) 0.5;
+     static private float cursor_x_range;
+     static private float cursor_y_range;
+     static private float map_x_percentage = (float) 0.5;
+     static private float map_y_percentage = (float) 0.5;
 
 
     public MapView(@NonNull Context context) {

@@ -17,7 +17,7 @@ public class ZoomView extends ConstraintLayout {
     static private View zoombar_fill;
 
     static private float zoombar_range;
-    static float zoom_percentage = (float) 0.5;
+    static private float zoom_percentage = (float) 0.5;
 
 
     public ZoomView(@NonNull Context context) {
