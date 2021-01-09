@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+
 public class CameraActivity extends AppCompatActivity {
 
     // Views and Layouts
@@ -17,9 +18,9 @@ public class CameraActivity extends AppCompatActivity {
         /** snip this */
     private TextView warning_text;
     private RelativeLayout map_layout;
-    private View map_cursor;
+
     private RelativeLayout zoombar_layout;
-    private View zoombar_fill;
+
 
     private View TranslationView;
         /** snip this */
@@ -27,23 +28,16 @@ public class CameraActivity extends AppCompatActivity {
     // Variables
     private String ip_address;
 
-        /** snip this */
-    private float cursor_x_range;
-    private float cursor_y_range;
-    private float zoombar_range;
-    float map_x_percentage = (float) 0.5;
-    float map_y_percentage = (float) 0.5;
-    float zoom_percentage = (float) 0;
-        /** snip this */
 
 
 
-    // Variable for touch listener ( not needed )
+
+    // Variable for testing ( not needed )
     float x_0 = 0;          // initial values for x and y
     float y_0 = 0;
     float x = 0;            // Coordinates for touch listener
     float y = 0;
-
+    float zoom_var = (float) 0.5;
 
 
     @Override
@@ -52,24 +46,22 @@ public class CameraActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_camera);
 
+        
             /** snip this */
         Initialize_Views();
-        Initialize_UI();
-            /** snip this */
 
+            /** snip this */
         Translation_Touch_Listener();
-        Update_Zoombar();
+
     }
 
     private void Initialize_Views(){           /** need this */
 
 
         warning_text = (TextView) findViewById(R.id.Warnings_text);
-        map_layout = (RelativeLayout) findViewById(R.id.Map_Layout);
-        map_cursor = (View) findViewById(R.id.Map_Cursor_View);
 
+        map_layout = (RelativeLayout) findViewById(R.id.Map_Layout);
         zoombar_layout = (RelativeLayout) findViewById(R.id.ZoomBarLayout);
-        zoombar_fill = (View) findViewById(R.id.ZoomBarView);
 
         TranslationView = (View) findViewById(R.id.TranslationView);
 
@@ -81,65 +73,19 @@ public class CameraActivity extends AppCompatActivity {
 
     }
 
-    private void Initialize_UI() {          /** need this */
-     // Map and Zoom UI have static dimensions
-
-        // Boundary Conditions
-        cursor_x_range = pxFromDp(this, 80);
-        cursor_y_range = pxFromDp(this, 60);
-
-        map_cursor.setX((cursor_x_range)*map_x_percentage);
-        map_cursor.setY((cursor_y_range)*map_y_percentage);
 
 
-        // Initialize zoombar
-        zoombar_range = pxFromDp(this, 500);
-        zoombar_fill.setY((zoombar_range));
+
+    public void Test_Zoombar(View view){
+
+        zoom_var = zoom_var + (float) 0.1;
+        if (zoom_var > 1.1) {zoom_var = 0;}
 
 
-        // Hiding warning textview
-        warning_text.setVisibility(View.GONE);
+        /** snip */
+        ZoomView.Update_Zoombar(zoom_var);
+        /** snip */
     }
-
-    public void Update_Zoombar(){           /** need this */
-        // Call when zooming
-        zoombar_layout.setVisibility(View.VISIBLE);
-
-        /** Update ZOOM percentage HERE with global variable or parameter */
-        zoom_percentage = (float) 0.5;
-
-        zoombar_fill.setY((zoombar_range)*(1-zoom_percentage));
-
-    }
-
-    private void Update_Map(){              /** need this */
-        // Call when translating
-        map_layout.setVisibility(View.VISIBLE);
-        warning_text.setVisibility(View.GONE); //hide warning
-
-        /** Update MAP percentage HERE with global variable or parameter */
-        map_x_percentage = Check_Map_Boundary(map_x_percentage);
-        map_y_percentage = Check_Map_Boundary(map_y_percentage);
-
-        map_cursor.setX((cursor_x_range)*map_x_percentage);
-        map_cursor.setY((cursor_y_range)*map_y_percentage);
-
-
-    }
-
-    private float Check_Map_Boundary(float percentage){             /** need this */
-        // for Update_Map
-        if (percentage >= 1){
-            warning_text.setVisibility(View.VISIBLE); //show warning
-            percentage =  1;
-        }
-        else if (percentage <= 0){
-            warning_text.setVisibility(View.VISIBLE); //show warning
-            percentage =  0;
-        }
-        return percentage;
-    }
-
 
 
 
@@ -159,9 +105,6 @@ public class CameraActivity extends AppCompatActivity {
 
 
     private void Translation_Touch_Listener(){
-        /** NOT FOR FINAL PROJECT. Instead just need to update map_percentage then call update_map()
-          same for zoom*/
-
         TranslationView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View V, MotionEvent event) {
@@ -171,11 +114,13 @@ public class CameraActivity extends AppCompatActivity {
                     x_0 = x;
                     y_0 = y;
                 }
-                //x//
-                map_x_percentage = map_x_percentage + (x-x_0)/1000;
-                map_y_percentage = map_y_percentage + (y-y_0)/1000;
-                Update_Map();
-                //x//
+
+
+                /** snip */
+                MapView.Update_Map(x-x_0,y-y_0);
+                /** snip */
+
+
                 x_0 = x;
                 y_0 = y;
                 return true;
